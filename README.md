@@ -16,26 +16,38 @@ Dieses Repository enthält den Quellcode für eine Laravel-Anwendung mit Vue.js,
 
 > **Hinweis:** Dieses Repository enthält aktuell eine losgelöste Domänenschicht als Prototyp. Die hier beschriebenen Schritte decken den Domänen-Code ab und bilden die Grundlage für eine spätere Integration in eine vollständige Laravel/Vue-Anwendung.
 
+### Frontend Click-Dummy
+
+Für User-Tests und Abstimmungen steht ein erstes Vue-Frontend als Click-Dummy zur Verfügung. Es zeigt die drei zentralen Arbeitsbereiche Dashboard, Vorlagenbibliothek und Kompetenzmatrix auf Basis von Mock-Daten.
+
 1. Abhängigkeiten installieren:
    ```bash
    composer install
    npm install
    ```
-2. Environment konfigurieren (für eine spätere Laravel-Integration):
+2. Prototyp starten:
+   ```bash
+   npm run dev
+   ```
+   Anschließend ist der Click-Dummy unter `http://localhost:5173` erreichbar. Über den Floating-Switch unten rechts lässt sich zwischen den drei Ansichten wechseln.
+
+### Vorbereitung der Laravel-Integration
+
+1. Environment konfigurieren (für eine spätere Laravel-Integration):
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
-3. Domain-Tests und Quality Gates ausführen:
+2. Domain-Tests und Quality Gates ausführen:
    ```bash
    composer test
    npm run lint
    ```
-4. (Sobald das Laravel-Frontend angebunden ist) Datenbank migrieren & seeden:
+3. (Sobald das Laravel-Frontend angebunden ist) Datenbank migrieren & seeden:
    ```bash
    php artisan migrate --seed
    ```
-5. Entwicklung starten:
+4. Entwicklung starten:
    ```bash
    php artisan serve
    npm run dev
